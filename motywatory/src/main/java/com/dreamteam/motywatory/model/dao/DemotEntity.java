@@ -29,7 +29,10 @@ public class DemotEntity {
     private String imagePath;
 
     @OneToMany
-    private List<VoteEntity> voteId;
+    private List<VoteEntity> votes;
+
+    @OneToMany
+    private List<CommentEntity> comments;
 
 
 }

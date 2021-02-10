@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demoty</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</head>
+<body style="background: #2D2121">
+<div th:replace="navi :: navi"></div>
+
+<div th:each="post : ${posts}"  style="color: white; text-align: center; background-color: black; width: 800px; padding: 30px; margin: auto">
+    <div>
+        <img th:src="@{${post.imagePath}}" style="width:600px" th:alt="${post.bottomText}">
+        <h2 th:text="${post.topText}" style="color: dodgerblue; font-family: Arial; margin-top: 10px;"></h2>
+        <h2 th:text="${post.bottomText}" style="color: aliceblue; font-family: Arial"></h2>
+        <div>
+            <button type="voteUP" class="btn btn-success btn-lg">Mocne</button>
+            <button type="VoteDown" class="btn btn-danger btn-lg">Słabe</button>
+            <button type="addComment" class="btn btn-outline-dark btn-lg">Dodaj Komentarz</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

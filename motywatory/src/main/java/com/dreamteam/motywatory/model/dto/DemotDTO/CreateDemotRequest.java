@@ -2,8 +2,7 @@ package com.dreamteam.motywatory.model.dto.DemotDTO;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

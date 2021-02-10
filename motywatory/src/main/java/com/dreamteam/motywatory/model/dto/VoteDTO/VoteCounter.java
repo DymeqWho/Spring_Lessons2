@@ -13,4 +13,5 @@ public class VoteCounter {
 
     private int votesUp;
     private int votesDown;
+    private int balance;
 }

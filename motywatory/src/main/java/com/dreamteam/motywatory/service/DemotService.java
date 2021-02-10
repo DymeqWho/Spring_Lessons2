@@ -41,8 +41,12 @@ public class DemotService {
             readDemotResponse.setImagePath(demotEntity.get().getImagePath());
             readDemotResponse.setTopText(demotEntity.get().getTopText());
             readDemotResponse.setBottomText(demotEntity.get().getBottomText());
-            readDemotResponse.setVote(demotEntity.get().getVoteId()
-                    .stream().map(entity -> entity.getVote().toString()).collect(Collectors.toList()));
+            readDemotResponse.setVote(demotEntity.get().getVotes()
+                                        .stream().map(entity -> entity.getVote().toString())
+                                        .collect(Collectors.toList()));
+            readDemotResponse.setComment(demotEntity.get().getComments()
+                                        .stream().map(entity -> entity.getContent().toString())
+                                        .collect(Collectors.toList()));
 
             return readDemotResponse;
         } else {
@@ -75,11 +79,12 @@ public class DemotService {
     }
 
     public VoteCounter showReactions(Long demotId) {
-        List<String> votes = demotRepo.findById(demotId).get().getVoteId()
+        List<String> votes = demotRepo.findById(demotId).get().getVotes()
                 .stream().map(entity -> entity.getVote().toString()).collect(Collectors.toList());
 
         int plus = 0;
         int minus = 0;
+        int balance = 0;
         for (String vote : votes) {
             if (vote.equals(VoteEntity.VOTE_TYPE.VOTE_UP.toString())) {
                 plus += 1;
@@ -87,7 +92,10 @@ public class DemotService {
                 minus += 1;
             }
         }
-        return new VoteCounter(plus, minus);
+
+        balance += (plus - minus);
+
+        return new VoteCounter(plus, minus, balance);
     }
 
 }

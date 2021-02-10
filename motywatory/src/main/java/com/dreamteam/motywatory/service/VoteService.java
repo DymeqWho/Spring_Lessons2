@@ -23,7 +23,7 @@ public class VoteService {
         voteEntity.setVote(request.getVote());
         voteEntity.setDemotId(demotEntity);
         voteEntity = voteRepo.save(voteEntity);
-        demotEntity.getVoteId().add(voteEntity);
+        demotEntity.getVotes().add(voteEntity);
 
     }
 

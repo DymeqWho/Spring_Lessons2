@@ -16,10 +16,10 @@ public class VoteController {
     public void createVote(@RequestBody CreateVoteRequest request,@PathVariable(name = "postId") Long postId) {
         voteService.createVoteRequest(request, postId);
     }
-
-    @Transactional
-    @PutMapping(path = "/api/posts/{postId}/reactions/{vote}")
-    public void addDemotReactionUp(@PathVariable(name = "postId") Long postId, @PathVariable (name = "vote") String vote) {
-       // voteService.vote(postId, vote);
-    }
+//
+//    @Transactional
+//    @PutMapping(path = "/api/posts/{postId}/reactions/{vote}")
+//    public void addDemotReactionUp(@PathVariable(name = "postId") Long postId, @PathVariable (name = "vote") String vote) {
+//       // voteService.vote(postId, vote);
+//    }
 }

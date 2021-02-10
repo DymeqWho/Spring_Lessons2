@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj Demota</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</head>
+<body style="background: #2D2121">
+<div th:replace="navi :: navi"></div>
+<div style="color: white; text-align: center; background-color: black; width: 800px; padding: 30px; margin: auto">
+<form th:action="@{/addDemot}" method="post" th:object="${addDemot}"  class="form-control-plaintext">
+    <label class="col-form-label">
+        <p style="color: white;">Tekst na górze:</p>
+        <input class="input-group-text" type="text" th:field="*{topText}">
+        <ul th:if="${#fields.hasErrors('topText')}">
+            <li th:each="err:${#fields.errors('topText')}" th:text="${err}"></li>
+        </ul>
+    </label>
+    <label class="col-form-label">
+        <p style="color: white;">Tekst na dole:</p>
+        <input class="input-group-text" type="text" th:field="*{bottomText}">
+        <ul th:if="${#fields.hasErrors('bottomText')}">
+            <li th:each="err:${#fields.errors('bottomText')}" th:text="${err}"></li>
+        </ul>
+    </label>
+    <label class="col-form-label">
+        <p style="color: white;">Link do obrazka:</p>
+        <input class="input-group-text" type="text" th:field="*{imagePath}">
+        <ul th:if="${#fields.hasErrors('imagePath')}">
+            <li th:each="err:${#fields.errors('imagePath')}" th:text="${err}"></li>
+        </ul>
+    </label>
+    <button class="btn-dark" type="submit">Zapisz Demota</button>
+</form>
+</div>
+</body>
+</html>

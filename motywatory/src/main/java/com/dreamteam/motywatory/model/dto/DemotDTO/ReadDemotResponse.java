@@ -20,4 +20,6 @@ public class ReadDemotResponse {
 
     private List<String> vote;
 
+    private List<String> comment;
+
 }

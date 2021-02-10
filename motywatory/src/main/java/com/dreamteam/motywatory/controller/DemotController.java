@@ -39,6 +39,7 @@ public class DemotController {
         demotService.update(id, demotToUpdate);
     }
 
+    @Transactional
     @DeleteMapping("/api/posts/{postId}")
     public void deleteDemot(@PathVariable(name = "postId") Long postId) {
         demotService.deleteDemot(postId);
